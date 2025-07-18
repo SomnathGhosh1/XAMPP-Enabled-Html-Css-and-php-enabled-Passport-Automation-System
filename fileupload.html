@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport Automation System - Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        input, button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+    <style>
+        body {
+            background: url('images1.jpeg') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align: center;">Passport Automation System</h2>
+
+<div class="container">
+    <h3>Upload Document</h3>
+    <form action="fileuploaded.php" method="POST" enctype="multipart/form-data" onsubmit="redirectToPayment(event)">
+        <input type="file" name="document" required>
+        <input type="submit" value="Upload Document">
+    </form>
+</div>
+
+<script>
+    function redirectToPayment(event) {
+        event.preventDefault(); // Prevent actual form submission for now
+        alert("Document uploaded successfully! Redirecting to the payment page...");
+        window.location.href = "payment.html"; // Redirect to payment page
+    }
+</script>
+
+</body>
+</html>

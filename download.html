@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport Download</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('ax.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Download Passport</h2>
+    <form onsubmit="generatePDF(event)">
+        <input type="text" id="passport_number" placeholder="Enter Passport Number" required>
+        <input type="email" id="email" placeholder="Enter Email" required>
+        <button type="submit">Download PDF</button>
+    </form>
+</div>
+
+<script>
+    function generatePDF(event) {
+        event.preventDefault(); // Prevent form submission
+
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+
+        const passportNumber = document.getElementById("passport_number").value;
+        const email = document.getElementById("email").value;
+
+        if (!passportNumber || !email) {
+            alert("Please enter all required details.");
+            return;
+        }
+
+        // Add content to PDF
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(22);
+        doc.text("Passport Document", 20, 20);
+
+        doc.setFontSize(16);
+        doc.text(`Passport Number: ${passportNumber}`, 20, 40);
+        doc.text(`Email: ${email}`, 20, 50);
+        doc.text(`Issue Date: ${new Date().toLocaleDateString()}`, 20, 60);
+        doc.text(`Expiry Date: ${new Date(new Date().setFullYear(new Date().getFullYear() + 10)).toLocaleDateString()}`, 20, 70);
+        doc.text("Status: Approved", 20, 80);
+
+        // Save the PDF
+        doc.save("Passport_Document.pdf");
+    }
+</script>
+
+</body>
+</html>

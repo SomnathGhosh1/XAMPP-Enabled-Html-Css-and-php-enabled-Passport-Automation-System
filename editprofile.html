@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('abcd1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .back-btn {
+            background-color: #007BFF;
+        }
+        .back-btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Edit Profile</h2>
+    <form action="update_profile.php" method="POST" onsubmit="redirectToFileUpload(event)">
+        <input type="text" name="full_name" value="John Doe" placeholder="Full Name" required>
+        <input type="email" name="email" value="john@example.com" placeholder="Email" required>
+        <input type="tel" name="phone" value="1234567890" placeholder="Phone Number" required>
+        <input type="date" name="dob" value="1990-01-01" required>
+        
+        <select name="gender" required>
+            <option value="">Select Gender</option>
+            <option value="male" selected>Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+        </select>
+
+        <textarea name="address" placeholder="Enter Address" required>123 Main Street</textarea>
+
+        <button type="submit">Update Profile</button>
+    </form>
+
+    <!-- New button to go back to payment -->
+    <button class="back-btn" onclick="goBackToPayment()">Go Back to Payment</button>
+</div>
+
+<script>
+    function redirectToFileUpload(event) {
+        event.preventDefault();
+        alert("Profile updated successfully! Redirecting to the document upload page...");
+        window.location.href = "fileupload.html"; // Redirect to file upload page
+    }
+
+    function goBackToPayment() {
+        window.location.href = "payment.html"; // Redirect back to payment page
+    }
+</script>
+
+</body>
+</html>

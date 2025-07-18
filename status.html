@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport Status Check</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('aa.jpg') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 350px;
+            text-align: center;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #statusMessage {
+            font-size: 18px;
+            color: #ff9800;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    
+<div class="container">
+    <h2>Check Passport Status</h2>
+    <form onsubmit="checkStatus(event)">
+        <input type="text" id="application_number" placeholder="Enter Application Number" required>
+        <button type="submit">Check Status</button>
+    </form>
+    <p id="statusMessage">Checking status...</p>
+
+    <!-- Button to go back to payment page -->
+    <button onclick="goBackToPayment()">Go Back to Payment</button>
+</div>
+
+<script>
+    function checkStatus(event) {
+        event.preventDefault(); // Prevent actual form submission
+
+        const applicationNumber = document.getElementById("application_number").value;
+        const statusMessage = document.getElementById("statusMessage");
+
+        if (!applicationNumber) {
+            alert("Please enter your application number.");
+            return;
+        }
+
+        // Show "In Progress" message
+        statusMessage.style.display = "block";
+        statusMessage.innerText = "Status: In Progress...";
+
+        // Wait for 3 seconds, then redirect to home page
+        setTimeout(() => {
+            alert("Your application is still in progress. Redirecting to home page...");
+            window.location.href = "formfilling.html"; // Change to your actual home page
+        }, 3000);
+    }
+
+    function goBackToPayment() {
+        window.location.href = "payment.html"; // Redirect back to payment page
+    }
+</script>
+
+</body>
+</html>

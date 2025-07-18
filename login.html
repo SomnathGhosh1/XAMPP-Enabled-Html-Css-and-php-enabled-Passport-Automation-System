@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Passport Automation System - Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        input[type="submit"], button {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover, button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+    <style>
+        body {
+            background: url('images.jpeg') no-repeat center center fixed;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align: center;">Passport Automation System</h2>
+
+<div class="container">
+    <h3>Sign Up</h3>
+    <form action="insert.php" method="POST" onsubmit="redirectToHome(event)">
+        <input type="text" name="t1" placeholder="Enter username" required>
+        <input type="password" name="t2" placeholder="Enter password" required>
+        <input type="submit" value="Register">
+    </form>
+
+    <h3>Login</h3>
+    <form action="login.php" method="POST" onsubmit="redirectToHome(event)">
+        <input type="text" name="t1" placeholder="Enter username" required>
+        <input type="password" name="t2" placeholder="Enter password" required>
+        <input type="submit" value="Login">
+    </form>
+</div>
+
+<script>
+    function redirectToHome(event) {
+        event.preventDefault(); // Stop the form from actually submitting
+        alert("Login successful! Redirecting to the home page...");
+        window.location.href = "formfilling.html"; // Redirect to form filling page
+    }
+</script>
+
+</body>
+</html>
